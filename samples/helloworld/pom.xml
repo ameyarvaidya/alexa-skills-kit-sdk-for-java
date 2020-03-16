@@ -39,7 +39,7 @@
     <sourceDirectory>src</sourceDirectory>
     <pluginManagement>
       <plugins>
-        <plugin>
+<!--         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.7.0</version>
@@ -47,8 +47,32 @@
             <source>1.8</source>
             <target>1.8</target>
             <forceJavacCompilerUse>true</forceJavacCompilerUse>
+            <descriptors>
+              <descriptor>src/main/assembly/jar-with-dependencies.xml</descriptor>
+            </descriptors>
           </configuration>
-        </plugin>
+        </plugin> -->
+
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<version>2.3</version>
+		<configuration>
+			<descriptors>
+				<descriptor>src/main/assembly/jar-with-dependencies.xml</descriptor>
+			</descriptors>
+			<finalName>standalone</finalName>
+		</configuration>
+		<executions>
+			<execution>
+				<id>assembly</id>
+				<phase>package</phase>
+				<goals>
+					<goal>single</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
       </plugins>
     </pluginManagement>
   </build>

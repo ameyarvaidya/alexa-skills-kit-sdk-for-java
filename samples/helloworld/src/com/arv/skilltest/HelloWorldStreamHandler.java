@@ -11,17 +11,18 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package com.amazon.ask.helloworld;
+package com.arv.skilltest;
 
 import com.amazon.ask.Skill;
-import com.amazon.ask.Skills;
 import com.amazon.ask.SkillStreamHandler;
+import com.amazon.ask.Skills;
 import com.amazon.ask.helloworld.handlers.CancelandStopIntentHandler;
+import com.amazon.ask.helloworld.handlers.FallbackIntentHandler;
 import com.amazon.ask.helloworld.handlers.HelloWorldIntentHandler;
 import com.amazon.ask.helloworld.handlers.HelpIntentHandler;
-import com.amazon.ask.helloworld.handlers.SessionEndedRequestHandler;
 import com.amazon.ask.helloworld.handlers.LaunchRequestHandler;
-import com.amazon.ask.helloworld.handlers.FallbackIntentHandler;
+import com.amazon.ask.helloworld.handlers.LearningIntentHandler;
+import com.amazon.ask.helloworld.handlers.SessionEndedRequestHandler;
 
 public class HelloWorldStreamHandler extends SkillStreamHandler {
 
@@ -30,12 +31,13 @@ public class HelloWorldStreamHandler extends SkillStreamHandler {
                 .addRequestHandlers(
                         new CancelandStopIntentHandler(),
                         new HelloWorldIntentHandler(),
+                        new LearningIntentHandler(),
                         new HelpIntentHandler(),
                         new LaunchRequestHandler(),
                         new SessionEndedRequestHandler(),
                         new FallbackIntentHandler())
                 // Add your skill id below
-                //.withSkillId("")
+                .withSkillId("amzn1.ask.skill.0321cb9d-cf75-4757-9074-fd93d6ca043f")
                 .build();
     }
 
